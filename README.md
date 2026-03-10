@@ -207,18 +207,20 @@ See the [Sample section](#sample) for a sample with a more detailed explanation 
 - This plugin version includes the following extra (non-standard) features:
   - BASE64 integrated from [brodybits / sqlite3-base64](https://github.com/brodybits/sqlite3-base64), using [brodybits / libb64-encode](https://github.com/brodybits/libb64-encode) (based on <http://libb64.sourceforge.net/> by Chris Venter, public domain)
   - REGEXP for Android (default Android-sqlite-connector database implementation), iOS, and macOS using [brodybits / sqlite3-regexp-cached](https://github.com/brodybits/sqlite3-regexp-cached) (based on <http://git.altlinux.org/people/at/packages/?p=sqlite3-pcre.git> by Alexey Tourbin, public domain)
-- SQLite / SQLCipher compile-time definitions:
+- SQLite / SQLCipher compile-time definitions - _most important definitions_:
+  - `SQLITE_HAS_CODEC=1`
+  - `SQLCIPHER_CRYPTO_CC` (iOS/macOS)
   - `SQLITE_THREADSAFE=1`
   - `SQLITE_DEFAULT_SYNCHRONOUS=3` (EXTRA DURABLE build setting) ref: [xpbrew/cordova-sqlite-storage#736](https://github.com/xpbrew/cordova-sqlite-storage/issues/736)
   - `SQLITE_LOCKING_STYLE=1` on iOS/macOS ONLY
-  - `HAVE_USLEEP=1` (iOS/macOS/Windows)
-  - `SQLITE_DEFAULT_MEMSTATUS=0`
-  - `SQLITE_OMIT_DECLTYPE`
-  - `SQLITE_OMIT_DEPRECATED`
-  - `SQLITE_OMIT_PROGRESS_CALLBACK`
-  - `SQLITE_OMIT_SHARED_CACHE`
-  - `SQLITE_OMIT_LOAD_EXTENSION`
-  - `SQLITE_TEMP_STORE=2`
+  - `HAVE_USLEEP=1` ~~(iOS/macOS/Windows)~~
+  - `SQLITE_DEFAULT_MEMSTATUS=0` (iOS/macOS)
+  - `SQLITE_OMIT_DECLTYPE` (iOS/macOS)
+  - `SQLITE_OMIT_DEPRECATED` (iOS/macOS)
+  - `SQLITE_OMIT_PROGRESS_CALLBACK` (iOS/macOS)
+  - `SQLITE_OMIT_SHARED_CACHE` (iOS/macOS)
+  - `SQLITE_OMIT_LOAD_EXTENSION` (iOS/macOS)
+  - `SQLITE_TEMP_STORE=2` (`SQLITE_TEMP_STORE=3` for Android)
   - `SQLITE_ENABLE_FTS3`
   - `SQLITE_ENABLE_FTS3_PARENTHESIS`
   - `SQLITE_ENABLE_FTS4`
@@ -229,7 +231,7 @@ See the [Sample section](#sample) for a sample with a more detailed explanation 
   - `SQLITE_DEFAULT_PAGE_SIZE=4096` - new default page size ref: <http://sqlite.org/pgszchng2016.html>
   - `SQLITE_DEFAULT_CACHE_SIZE=-2000` - new default cache size ref: <http://sqlite.org/pgszchng2016.html>
   - `SQLITE_OS_WINRT` (Windows only)
-  - `NDEBUG` on Windows (Release build only)
+  - `NDEBUG` on ~~Windows (Release build only)~~
 - `SQLITE_DBCONFIG_DEFENSIVE` flag is used for extra SQL safety on all platforms Android/iOS/macOS/Windows ref:
   - <https://www.sqlite.org/c3ref/c_dbconfig_defensive.html>
   - <https://www.sqlite.org/releaselog/3_26_0.html>

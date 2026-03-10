@@ -2,6 +2,7 @@
 
 # cordova-sqlcipher-evmax-ext-build-free 0.0.4-dev
 
+- fixup some SQLite / SQLCipher compile-time definitions in README.md
 - update GitHub links in `package.json`
 
 # cordova-sqlcipher-evmax-ext-build-free 0.0.3-dev
