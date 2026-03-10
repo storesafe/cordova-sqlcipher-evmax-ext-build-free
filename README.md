@@ -15,6 +15,8 @@ This plugin version is available under GPL v3 (<https://www.gnu.org/licenses/gpl
 
 **NOTICE:** Commercial licenses for evplus, [litehelpers / Cordova-sqlite-evcore-extbuild-free](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free) or [litehelpers / Cordova-sqlite-enterprise-free](https://github.com/litehelpers/Cordova-sqlite-enterprise-free) are **not** valid for this plugin version. For an upgrade please contact: <sales@storesafe.io>
 
+XXX TODO UPDATE RE: android-database-*
+
 ## WARNINGS
 
 - IMPORTANT EXPORT REQUIREMENTS ref: <https://github.com/brodybits/ask-me-anything/issues/20>
@@ -200,14 +202,14 @@ See the [Sample section](#sample) for a sample with a more detailed explanation 
   - Cordova pre-7.0.0 do not automatically save the state of added plugins and platforms (`--save` flag is needed for Cordova pre-7.0.0)
   - It may be needed to use `cordova prepare` in case of cordova-ios pre-4.3.0 (Cordova CLI `6.4.0`).
   - Cordova versions older than `6.0.0` are missing the `cordova-ios@4.0.0` security fixes.
-- SQLCipher version information:
+- XXX XXX TODO UPDATE & FIX: SQLCipher version information:
   - SQLCipher `4.4.3` with OpenSSL 1.1.1k for Android: <https://github.com/brodybits/android-database-sqlcipher-evplus-ext-ndk-driver-build-free>
   - SQLCipher `4.4.3` using the Apple Security framework for iOS and macOS ("osx")
 - This plugin version has all dependencies included and should work with build systems such as Intel XDK.
 - This plugin version includes the following extra (non-standard) features:
   - BASE64 integrated from [brodybits / sqlite3-base64](https://github.com/brodybits/sqlite3-base64), using [brodybits / libb64-encode](https://github.com/brodybits/libb64-encode) (based on <http://libb64.sourceforge.net/> by Chris Venter, public domain)
   - REGEXP for Android (default Android-sqlite-connector database implementation), iOS, and macOS using [brodybits / sqlite3-regexp-cached](https://github.com/brodybits/sqlite3-regexp-cached) (based on <http://git.altlinux.org/people/at/packages/?p=sqlite3-pcre.git> by Alexey Tourbin, public domain)
-- SQLite / SQLCipher compile-time definitions:
+- XXX XXX TODO UPDATE & FIX: SQLite / SQLCipher compile-time definitions:
   - `SQLITE_THREADSAFE=1`
   - `SQLITE_DEFAULT_SYNCHRONOUS=3` (EXTRA DURABLE build setting) ref: [xpbrew/cordova-sqlite-storage#736](https://github.com/xpbrew/cordova-sqlite-storage/issues/736)
   - `SQLITE_LOCKING_STYLE=1` on iOS/macOS ONLY

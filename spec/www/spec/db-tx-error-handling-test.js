@@ -1697,6 +1697,7 @@ var mytests = function() {
 
         // Check fix for litehelpers/Cordova-sqlite-storage#409:
         it(suiteName + 'empty readTransaction (no sql statements) and then SELECT transaction', function (done) {
+          // XXX TODO SKIP ON XXX XXX DUE TO KNOWN FAILURE
           var db = openDatabase("empty-read-tx", "1.0", "Demo", DEFAULT_SIZE);
 
           db.readTransaction(function(tx) {

@@ -2,6 +2,8 @@
 
 # cordova-sqlcipher-evmax-ext-build-free 0.0.4-dev
 
+- XXX TODO ADD ENTRY FOR SQLCIPHER UPDATE
+- XXX TODO DOCUMENT REMOVED BUG WORKAROUND
 - update GitHub links in `package.json`
 
 # cordova-sqlcipher-evmax-ext-build-free 0.0.3-dev

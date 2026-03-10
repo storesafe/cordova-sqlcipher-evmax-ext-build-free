@@ -384,11 +384,12 @@
         @addStatement "BEGIN", [], null, (tx, err) ->
           throw newSQLError "unable to begin transaction: " + err.message, err.code
 
+      # SKIP WORKAROUND FOR NOW IN THIS PLUGIN VERSION - REINTRODUCES KNOWN ISSUE REFERENCED BELOW:
       # Workaround for litehelpers/Cordova-sqlite-storage#409
       # extra statement in case user function does not add any SQL statements
       # TBD This also adds an extra statement to db.executeSql()
-      else
-        @addStatement "SELECT 1", [], null, null
+      # else
+      #   @addStatement "SELECT 1", [], null, null
 
       return
 
