@@ -220,7 +220,7 @@ See the [Sample section](#sample) for a sample with a more detailed explanation 
   - `SQLITE_OMIT_PROGRESS_CALLBACK`
   - `SQLITE_OMIT_SHARED_CACHE`
   - `SQLITE_OMIT_LOAD_EXTENSION`
-  - `SQLITE_TEMP_STORE=2`
+  - `SQLITE_TEMP_STORE=3`
   - `SQLITE_ENABLE_FTS3`
   - `SQLITE_ENABLE_FTS3_PARENTHESIS`
   - `SQLITE_ENABLE_FTS4`
