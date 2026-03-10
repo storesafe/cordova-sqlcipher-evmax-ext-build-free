@@ -2,6 +2,7 @@
 
 # cordova-sqlcipher-evmax-ext-build-free 0.0.4-dev
 
+- SKIP WORKAROUND for cordova-sqlite-storage issue 403 to avoid possible issue with SQLCipher update on Android
 - use `-DSQLITE_TEMP_STORE=3` for iOS/macOS as well as for Android
 - fixup some SQLite / SQLCipher compile-time definitions in README.md
 - update GitHub links in `package.json`
