@@ -65,7 +65,7 @@ Super-premium enterprise version with additional performance and stability impro
 
 ### Multiple SQLite problem on Android
 
-This plugin uses non-standard <https://github.com/brodybits/android-database-sqlcipher-evplus-ext-ndk-driver-build-free> database access implementation on Android. In case an application access the SAME database using multiple plugins there is a risk of data corruption ref: [xpbrew/cordova-sqlite-storage#626](https://github.com/xpbrew/cordova-sqlite-storage/issues/626)) as described in <http://ericsink.com/entries/multiple_sqlite_problem.html> and <https://www.sqlite.org/howtocorrupt.html>.
+This plugin uses non-standard <https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free> database access implementation on Android. In case an application access the SAME database using multiple plugins there is a risk of data corruption ref: [xpbrew/cordova-sqlite-storage#626](https://github.com/xpbrew/cordova-sqlite-storage/issues/626)) as described in <http://ericsink.com/entries/multiple_sqlite_problem.html> and <https://www.sqlite.org/howtocorrupt.html>.
 
 <!--
 The workaround is to use the `androidDatabaseProvider: 'system'` setting as described in the [Android database provider](#android-database-provider) section below:
@@ -203,7 +203,7 @@ See the [Sample section](#sample) for a sample with a more detailed explanation 
   - It may be needed to use `cordova prepare` in case of cordova-ios pre-4.3.0 (Cordova CLI `6.4.0`).
   - Cordova versions older than `6.0.0` are missing the `cordova-ios@4.0.0` security fixes.
 - XXX XXX TODO UPDATE & FIX: SQLCipher version information:
-  - SQLCipher `4.4.3` with OpenSSL 1.1.1k for Android: <https://github.com/brodybits/android-database-sqlcipher-evplus-ext-ndk-driver-build-free>
+  - SQLCipher `4.13.0` with OpenSSL `3.5.5` for Android: <https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free>
   - SQLCipher `4.4.3` using the Apple Security framework for iOS and macOS ("osx")
 - This plugin version has all dependencies included and should work with build systems such as Intel XDK.
 - This plugin version includes the following extra (non-standard) features:
