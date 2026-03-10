@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/brodybits/cordova-sqlcipher-evmax-ext-build-free.git"
+    "url": "https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free.git"
   },
   "keywords": [
     "sqlite",
@@ -26,9 +26,9 @@
   "author": "various",
   "license": "GPL-3.0 OR Commercial",
   "bugs": {
-    "url": "https://github.com/brodybits/cordova-sqlcipher-evmax-ext-build-free/issues"
+    "url": "https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free/issues"
   },
-  "homepage": "https://github.com/brodybits/cordova-sqlcipher-evmax-ext-build-free",
+  "homepage": "https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free",
   "scripts": {
     "clean-spec": "rm -rf spec/[mnp]* && git cl spec/config.xml spec/package.json && git status --ignored",
     "prepare-js": "coffee -p SQLitePlugin.coffee.md > www/SQLitePlugin.js",
