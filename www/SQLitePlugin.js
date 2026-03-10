@@ -326,6 +326,8 @@ Contact for commercial license: sales@litehelpers.net
       this.addStatement("BEGIN", [], null, function(tx, err) {
         throw newSQLError("unable to begin transaction: " + err.message, err.code);
       });
+    } else {
+      this.addStatement("SELECT 1", [], null, null);
     }
   };
 
