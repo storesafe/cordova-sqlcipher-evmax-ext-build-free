@@ -202,7 +202,7 @@ See the [Sample section](#sample) for a sample with a more detailed explanation 
   - Cordova versions older than `6.0.0` are missing the `cordova-ios@4.0.0` security fixes.
 - SQLCipher version information:
   - SQLCipher `4.4.3` with OpenSSL 1.1.1k for Android: <https://github.com/brodybits/android-database-sqlcipher-evplus-ext-ndk-driver-build-free>
-  - SQLCipher `4.4.3` using the Apple Security framework for iOS and macOS ("osx")
+  - SQLCipher `4.13.0` using the Apple Security framework for iOS and macOS ("osx")
 - This plugin version has all dependencies included and should work with build systems such as Intel XDK.
 - This plugin version includes the following extra (non-standard) features:
   - BASE64 integrated from [brodybits / sqlite3-base64](https://github.com/brodybits/sqlite3-base64), using [brodybits / libb64-encode](https://github.com/brodybits/libb64-encode) (based on <http://libb64.sourceforge.net/> by Chris Venter, public domain)
@@ -232,6 +232,7 @@ See the [Sample section](#sample) for a sample with a more detailed explanation 
   - `SQLITE_DEFAULT_CACHE_SIZE=-2000` - new default cache size ref: <http://sqlite.org/pgszchng2016.html>
   - `SQLITE_OS_WINRT` (Windows only)
   - `NDEBUG` on ~~Windows (Release build only)~~
+  - `SQLITE_EXTRA_INIT=sqlcipher_extra_init` & `SQLITE_EXTRA_SHUTDOWN=sqlcipher_extra_shutdown` - iOS / macOS
 - `SQLITE_DBCONFIG_DEFENSIVE` flag is used for extra SQL safety on all platforms Android/iOS/macOS/Windows ref:
   - <https://www.sqlite.org/c3ref/c_dbconfig_defensive.html>
   - <https://www.sqlite.org/releaselog/3_26_0.html>
