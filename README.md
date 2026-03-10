@@ -220,7 +220,7 @@ See the [Sample section](#sample) for a sample with a more detailed explanation 
   - `SQLITE_OMIT_PROGRESS_CALLBACK` (iOS/macOS)
   - `SQLITE_OMIT_SHARED_CACHE` (iOS/macOS)
   - `SQLITE_OMIT_LOAD_EXTENSION` (iOS/macOS)
-  - `SQLITE_TEMP_STORE=2` (`SQLITE_TEMP_STORE=3` for Android)
+  - `SQLITE_TEMP_STORE=3` (Android / iOS / macOS) ref: <https://github.com/sqlcipher/sqlcipher/issues/108#issuecomment-359255500>
   - `SQLITE_ENABLE_FTS3`
   - `SQLITE_ENABLE_FTS3_PARENTHESIS`
   - `SQLITE_ENABLE_FTS4`
