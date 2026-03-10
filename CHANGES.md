@@ -2,6 +2,7 @@
 
 # cordova-sqlcipher-evmax-ext-build-free 0.0.4-dev
 
+- use `-DSQLITE_TEMP_STORE=3` for iOS/macOS as well as for Android
 - fixup some SQLite / SQLCipher compile-time definitions in README.md
 - update GitHub links in `package.json`
 
