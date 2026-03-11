@@ -1,5 +1,7 @@
 # Changes
 
+# cordova-sqlcipher-evmax-ext-build-free 0.0.5-dev
+
 # cordova-sqlcipher-evmax-ext-build-free 0.0.4-dev
 
 - SQLCipher 4.13.0 update for iOS/macOS
