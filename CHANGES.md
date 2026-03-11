@@ -2,6 +2,8 @@
 
 # cordova-sqlcipher-evmax-ext-build-free 0.0.5-dev
 
+- SKIP WORKAROUND for cordova-sqlite-storage issue 403 to avoid possible issue with SQLCipher update on Android
+
 # cordova-sqlcipher-evmax-ext-build-free 0.0.4-dev
 
 - SQLCipher 4.13.0 update for iOS/macOS
