@@ -2,6 +2,13 @@
 
 # cordova-sqlcipher-evmax-ext-build-free 0.0.5-dev
 
+- SQLCipher 4.13.0 update for Android, with updated build:
+  - built from: https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free
+  - with customized OpenSSL 3.5.5 crypto build
+  - using recent Android NDK with 16KB page size by default
+  - with SQLITE_ENABLE_MATH_FUNCTIONS enabled for Android
+  - includes BLOBFROMBASE64 support for Android
+  - compile-time options are now more consistent with compile-time options for iOS
 - SKIP WORKAROUND for cordova-sqlite-storage issue 403 to avoid possible issue with SQLCipher update on Android
 
 # cordova-sqlcipher-evmax-ext-build-free 0.0.4-dev

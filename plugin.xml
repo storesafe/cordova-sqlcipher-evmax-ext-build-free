@@ -35,7 +35,7 @@
          -->
 
         <!-- ... -->
-        <lib-file src="src/android-database-sqlcipher-evplus-ext-ndk-driver.jar" />
+        <lib-file src="src/deps/android/android-sqlcipher-evplus-ndk-driver.jar" />
     </platform>
 
     <!-- iOS -->

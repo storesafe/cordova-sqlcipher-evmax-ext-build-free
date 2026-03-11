@@ -63,7 +63,7 @@ Super-premium enterprise version with additional performance and stability impro
 
 ### Multiple SQLite problem on Android
 
-This plugin uses non-standard <https://github.com/brodybits/android-database-sqlcipher-evplus-ext-ndk-driver-build-free> database access implementation on Android. In case an application access the SAME database using multiple plugins there is a risk of data corruption ref: [xpbrew/cordova-sqlite-storage#626](https://github.com/xpbrew/cordova-sqlite-storage/issues/626)) as described in <http://ericsink.com/entries/multiple_sqlite_problem.html> and <https://www.sqlite.org/howtocorrupt.html>.
+This plugin uses non-standard __[`brody4hire/android-sqlcipher-evplus-ndk-driver-free`](https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free)__ database access implementation on Android. In case an application access the SAME database using multiple plugins there is a risk of data corruption ref: __[`storesafe/cordova-sqlite-storage#626`](https://github.com/storesafe/cordova-sqlite-storage/issues/626)__ as described in <http://ericsink.com/entries/multiple_sqlite_problem.html> and <https://www.sqlite.org/howtocorrupt.html>.
 
 <!--
 The workaround is to use the `androidDatabaseProvider: 'system'` setting as described in the [Android database provider](#android-database-provider) section below:
@@ -202,7 +202,7 @@ See the [Sample section](#sample) for a sample with a more detailed explanation 
   - It may be needed to use `cordova prepare` in case of cordova-ios pre-4.3.0 (Cordova CLI `6.4.0`).
   - Cordova versions older than `6.0.0` are missing the `cordova-ios@4.0.0` security fixes.
 - SQLCipher version information:
-  - SQLCipher `4.4.3` with OpenSSL 1.1.1k for Android: <https://github.com/brodybits/android-database-sqlcipher-evplus-ext-ndk-driver-build-free>
+  - SQLCipher `4.13.0` with customized OpenSSL `3.5.5` crypto build for Android: __[`brody4hire/android-sqlcipher-evplus-ndk-driver-free`](https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free)__
   - SQLCipher `4.13.0` using the Apple Security framework for iOS and macOS ("osx")
 - This plugin version has all dependencies included and should work with build systems such as Intel XDK.
 - This plugin version includes the following extra (non-standard) features:
@@ -215,12 +215,12 @@ See the [Sample section](#sample) for a sample with a more detailed explanation 
   - `SQLITE_DEFAULT_SYNCHRONOUS=3` (EXTRA DURABLE build setting) ref: [xpbrew/cordova-sqlite-storage#736](https://github.com/xpbrew/cordova-sqlite-storage/issues/736)
   - `SQLITE_LOCKING_STYLE=1` on iOS/macOS ONLY
   - `HAVE_USLEEP=1` ~~(iOS/macOS/Windows)~~
-  - `SQLITE_DEFAULT_MEMSTATUS=0` (iOS/macOS)
-  - `SQLITE_OMIT_DECLTYPE` (iOS/macOS)
-  - `SQLITE_OMIT_DEPRECATED` (iOS/macOS)
-  - `SQLITE_OMIT_PROGRESS_CALLBACK` (iOS/macOS)
-  - `SQLITE_OMIT_SHARED_CACHE` (iOS/macOS)
-  - `SQLITE_OMIT_LOAD_EXTENSION` (iOS/macOS)
+  - `SQLITE_DEFAULT_MEMSTATUS=0`
+  - `SQLITE_OMIT_DECLTYPE`
+  - `SQLITE_OMIT_DEPRECATED`
+  - `SQLITE_OMIT_PROGRESS_CALLBACK`
+  - `SQLITE_OMIT_SHARED_CACHE`
+  - `SQLITE_OMIT_LOAD_EXTENSION`
   - `SQLITE_TEMP_STORE=3` (Android / iOS / macOS) ref: <https://github.com/sqlcipher/sqlcipher/issues/108#issuecomment-359255500>
   - `SQLITE_ENABLE_FTS3`
   - `SQLITE_ENABLE_FTS3_PARENTHESIS`
@@ -228,19 +228,20 @@ See the [Sample section](#sample) for a sample with a more detailed explanation 
   - `SQLITE_ENABLE_FTS5`
   - `SQLITE_ENABLE_RTREE`
   - `SQLITE_ENABLE_JSON1`
+  - `SQLITE_ENABLE_MATH_FUNCTIONS` __for Android only__
   - `SQLITE_DEFAULT_PAGE_SIZE=4096` - new default page size ref: <http://sqlite.org/pgszchng2016.html>
   - `SQLITE_DEFAULT_CACHE_SIZE=-2000` - new default cache size ref: <http://sqlite.org/pgszchng2016.html>
   - `SQLITE_OS_WINRT` (Windows only)
-  - `NDEBUG` ~~on Windows (Release build only)~~ _iOS / macOS_
+  - `NDEBUG`
   - `SQLITE_EXTRA_INIT=sqlcipher_extra_init` & `SQLITE_EXTRA_SHUTDOWN=sqlcipher_extra_shutdown` - iOS / macOS
 - `SQLITE_DBCONFIG_DEFENSIVE` flag is used for extra SQL safety on all platforms Android/iOS/macOS/Windows ref:
   - <https://www.sqlite.org/c3ref/c_dbconfig_defensive.html>
   - <https://www.sqlite.org/releaselog/3_26_0.html>
 - The iOS database location is now mandatory, as documented below.
 - This version branch supports the use of two (2) possible Android sqlite database implementations:
-  - default: high-performance, lightweight [storesafe/android-sqlite-evplus-ndk-driver-free](https://github.com/storesafe/android-sqlite-evplus-ndk-driver-free) NDK library (C-language implementation)
+  - default: high-performance, lightweight __[`brody4hire/android-sqlcipher-evplus-ndk-driver-free`](https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free)__ NDK library (C-language implementation)
   - optional: Android system database implementation, using the `androidDatabaseProvider: 'system'` setting in `sqlitePlugin.openDatabase()` call as described in the [Android database provider](#android-database-provider) section below.
-- The following feature is available in [litehelpers / cordova-sqlite-ext](https://github.com/litehelpers/cordova-sqlite-ext) (with permissive license terms, missing performance and stability enhancements from [storesafe/android-sqlite-evplus-ndk-driver-free](https://github.com/storesafe/android-sqlite-evplus-ndk-driver-free)), MISSING in this plugin version:
+- The following feature is available in [litehelpers / cordova-sqlite-ext](https://github.com/litehelpers/cordova-sqlite-ext) (with permissive license terms, missing performance and stability enhancements from __[`brody4hire/android-sqlcipher-evplus-ndk-driver-free`](https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free)__), MISSING in this plugin version:
   - Pre-populated database (Android/iOS/macOS/Windows)
 - Windows platform version using a customized version of the performant [doo / SQLite3-WinRT](https://github.com/doo/SQLite3-WinRT) C++ component based on the [brodybits/SQLite3-WinRT sync-api-fix branch](https://github.com/brodybits/SQLite3-WinRT/tree/sync-api-fix), with the following known limitations:
   - This plugin version branch has dependency on platform toolset libraries included by Visual Studio 2017 ref: [xpbrew/cordova-sqlite-storage#580](https://github.com/xpbrew/cordova-sqlite-storage/issues/580). Visual Studio 2015 is now supported by [`brodybits/cordova-sqlite-legacy`](https://github.com/brodybits/cordova-sqlite-legacy) (permissive license terms, no performance enhancements for Android) and [`brodybits/cordova-sqlite-evcore-legacy-ext-common-free`](https://github.com/brodybits/cordova-sqlite-evcore-legacy-ext-common-free) (GPL or commercial license terms, with performance enhancements for Android). UNTESTED workaround for Visual Studio 2015: it *may* be possible to support this plugin version on Visual Studio 2015 Update 3 by installing platform toolset v141.)
@@ -587,7 +588,7 @@ See **Security of sensitive data** in the [Security](#security) section above.
 - In case of ignored INSERT OR IGNORE statement WebKit Web SQL (Android/iOS) reports insertId with an old INSERT row id value while the plugin reports insertId: undefined.
 - In case of a SQL error handler that does not recover the transaction, WebKit Web SQL (Android/iOS) would incorrectly report error code 0 while the plugin would report the same error code as in the SQL error handler. (In case of an error with no SQL error handler then Android/iOS WebKit Web SQL would report the same error code that would have been reported in the SQL error hander.)
 - In case a transaction function throws an exception, the message and code if present are reported by the plugin but *not* by (WebKit) Web SQL.
-- SQL error messages are inconsistent on Windows and less descriptive on Android in case of the default [android-sqlite-evplus-ndk-driver-free](https://github.com/storesafe/android-sqlite-evplus-ndk-driver-free) implementation.
+- SQL error messages are inconsistent on Windows and less descriptive on Android _(in case of the default ~~[android-sqlite-evplus-ndk-driver-free](https://github.com/storesafe/android-sqlite-evplus-ndk-driver-free)~~ __[`android-sqlcipher-evplus-ndk-driver-free`](https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free)__ implementation)_.
 - There are some other differences in the SQL error messages reported by WebKit Web SQL and this plugin.
 
 <!-- END Deviations -->
@@ -596,8 +597,8 @@ See **Security of sensitive data** in the [Security](#security) section above.
 
 - Possible crashes in case of certain cases of invalid binary string data on Android
 - The iOS/macOS platform versions do not support certain rapidly repeated open-and-close or open-and-delete test scenarios due to how the implementation handles background processing
-- HIGH PRIORITY TODO: The default [android-sqlite-evplus-ndk-driver-free](https://github.com/storesafe/android-sqlite-evplus-ndk-driver-free) database access implementation does not currently handle control characters such as vertical tab, form feed, or backspace characters properly ref: [litehelpers/Cordova-sqlite-evcore-extbuild-free#28](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free/issues/28)
-- Incorrect handling of emoji and other 4-byte UTF-8 characters on Android on default [android-sqlite-evplus-ndk-driver-free](https://github.com/storesafe/android-sqlite-evplus-ndk-driver-free) NDK access implementation as described in: [litehelpers/Cordova-sqlite-evcore-extbuild-free#44](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free/issues/44), [xpbrew/cordova-sqlite-storage#564](https://github.com/xpbrew/cordova-sqlite-storage/issues/564) (this is not an issue when using the `androidDatabaseProvider: 'system'` setting)
+- HIGH PRIORITY TODO: The default __[`android-sqlcipher-evplus-ndk-driver-free`](https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free)__ database access implementation does not currently handle control characters such as vertical tab, form feed, or backspace characters properly ref: [litehelpers/Cordova-sqlite-evcore-extbuild-free#28](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free/issues/28)
+- Incorrect handling of emoji and other 4-byte UTF-8 characters on Android on default __[`android-sqlcipher-evplus-ndk-driver-free`](https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free)__ NDK access implementation as described in: [litehelpers/Cordova-sqlite-evcore-extbuild-free#44](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free/issues/44), [xpbrew/cordova-sqlite-storage#564](https://github.com/xpbrew/cordova-sqlite-storage/issues/564) (this is not an issue when using the `androidDatabaseProvider: 'system'` setting)
 - It is possible to request a SQL statement list such as "SELECT 1; SELECT 2" within a single SQL statement string, however the plugin will only execute the first statement and silently ignore the others ref: [xpbrew/cordova-sqlite-storage#551](https://github.com/xpbrew/cordova-sqlite-storage/issues/551)
 - Execution of INSERT statement that affects multiple rows (due to SELECT cause or using TRIGGER(s), for example) reports incorrect rowsAffected on Android with use of the `androidDatabaseProvider: 'system'` setting.
 - FIXED in this plugin version: ~~Memory issue observed when adding a large number of records due to the JSON implementation which is improved in [litehelpers / Cordova-sqlite-evcore-extbuild-free](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free) (GPL or commercial license terms)~~
@@ -606,8 +607,8 @@ See **Security of sensitive data** in the [Security](#security) section above.
 - SQL errors are reported with incorrect & inconsistent error message on Windows - _error message info not always correct_
 - _Hanging transactions in case of special JSON characters in result columns ref: <https://github.com/brodysoft/cordova-sqlite-evcore-extbuild-free/issues/51>_
 error info ref: [xpbrew/cordova-sqlite-storage#539](https://github.com/xpbrew/cordova-sqlite-storage/issues/539).
-- Issue on default [android-sqlite-evplus-ndk-driver-free](https://github.com/storesafe/android-sqlite-evplus-ndk-driver-free) database access implementation in case of database file name with multi-byte UTF-8 characters ref: [litehelpers/Cordova-sqlite-evcore-extbuild-free#25](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free/issues/25)
-- Issue (truncation issue) with NULL characters (`'\0\` or `'\u0000'`) on Android (default [android-sqlite-evplus-ndk-driver-free](https://github.com/storesafe/android-sqlite-evplus-ndk-driver-free) database access implementation) and Windows ref: [litehelpers/Cordova-sqlite-evcore-extbuild-free#27](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free/issues/27)
+- Issue on default __[`android-sqlcipher-evplus-ndk-driver-free`](https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free)__ database access implementation in case of database file name with multi-byte UTF-8 characters ref: [litehelpers/Cordova-sqlite-evcore-extbuild-free#25](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free/issues/25)
+- Issue (truncation issue) with NULL characters (`'\0\` or `'\u0000'`) on Android (default __[`android-sqlcipher-evplus-ndk-driver-free`](https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free)__ database access implementation) and Windows ref: [litehelpers/Cordova-sqlite-evcore-extbuild-free#27](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free/issues/27)
 - Close/delete database bugs described below.
 - When a database is opened and deleted without closing, the iOS/macOS platform version is known to leak resources.
 - It is NOT possible to open multiple databases with the same name but in different locations (iOS/macOS platform version).
@@ -628,7 +629,7 @@ _Some additional issues are tracked in [open cordova-sqlite-storage bug-general 
 - SQL error messages reported by Windows platform version are not consistent with Android/iOS/macOS platform versions.
 - UNICODE `\u2028` (line separator) and `\u2029` (paragraph separator) characters are currently not supported and known to be broken on iOS, macOS, and Android platform versions due to JSON issues reported in [Cordova bug CB-9435](https://issues.apache.org/jira/browse/CB-9435) and [cordova/cordova-discuss#57](https://github.com/cordova/cordova-discuss/issues/57). This is fixed with a workaround for iOS/macOS in: [litehelpers / Cordova-sqlite-evplus-legacy-free](https://github.com/litehelpers/Cordova-sqlite-evplus-legacy-free) and [litehelpers / Cordova-sqlite-evplus-legacy-attach-detach-free](https://github.com/litehelpers/Cordova-sqlite-evplus-legacy-attach-detach-free) (GPL or special commercial license terms) as well as [litehelpers / cordova-sqlite-evmax-ext-workers-legacy-build-free](https://github.com/litehelpers/cordova-sqlite-evmax-ext-workers-legacy-build-free) (GPL or premium commercial license terms).
 - _SELECT BLOB column value type is not supported consistently across all platforms (not supported on Windows). It is recommended to use the built-in HEX function to SELECT BLOB column data in hexadecimal format, working consistently across all platforms. As an alternative: SELECT BLOB in Base64 format using BASE64 function (described elsewhere in this document) is supported by this plugin version (GPL or commercial license options) as well as [litehelpers / cordova-sqlite-ext](https://github.com/litehelpers/cordova-sqlite-ext) (permissive license terms). INLINE BLOB values such as `X'010203'` are supported by the SQLite syntax on all platforms. FUTURE TBD equivalent to UNHEX (supported in MySQL) or conversion of Base-64 string to BLOB is desired._
-- Database files with certain multi-byte UTF-8 characters are not tested and not expected to work consistently across all platform implementations. The default [android-sqlite-evplus-ndk-driver-free](https://github.com/storesafe/android-sqlite-evplus-ndk-driver-free) database access implementation may not function properly on certain Android versions in case of database file names with emoji and other 4-byte UTF-8 characters ref: [litehelpers/Cordova-sqlite-evcore-extbuild-free#26](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free/issues/26)
+- Database files with certain multi-byte UTF-8 characters are not tested and not expected to work consistently across all platform implementations. The default __[`android-sqlcipher-evplus-ndk-driver-free`](https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free)__ database access implementation may not function properly on certain Android versions in case of database file names with emoji and other 4-byte UTF-8 characters ref: [litehelpers/Cordova-sqlite-evcore-extbuild-free#26](https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free/issues/26)
 - Issues with UNICODE `\u0000` character (same as `\0`):
   - Encoding issue reproduced on Android (default [Android-sqlite-connector](https://github.com/liteglue/Android-sqlite-connector) implementation with [Android-sqlite-ext-native-driver](https://github.com/brodybits/Android-sqlite-ext-native-driver), using Android NDK)
   - Truncation in case of argument value with UNICODE `\u0000` character reproduced on (WebKit) Web SQL as well as plugin on Android (default [Android-sqlite-connector](https://github.com/liteglue/Android-sqlite-connector) implementation with [Android-sqlite-ext-native-driver](https://github.com/brodybits/Android-sqlite-ext-native-driver), using Android NDK) and Windows
@@ -856,7 +857,7 @@ var db = window.sqlitePlugin.openDatabase({name: 'my.db', location: 'default'}, 
 
 **WARNING:** The new "default" location value is different from the old default location used until March 2016 and would break an upgrade for an app that was using the old default setting (`location: 0`, same as using `iosDatabaseLocation: 'Documents'`) on iOS. The recommended solution is to continue to open the database from the same location, using `iosDatabaseLocation: 'Documents'`.
 
-**WARNING 2:** As described above: by default this plugin uses a non-standard [android-sqlite-evplus-ndk-driver-free](https://github.com/storesafe/android-sqlite-evplus-ndk-driver-free) sqlite database access implementation on Android. In case an application access the **same** database using multiple plugins there is a risk of data corruption (ref: [xpbrew/cordova-sqlite-storage#626](https://github.com/xpbrew/cordova-sqlite-storage/issues/626)) as described in <http://ericsink.com/entries/multiple_sqlite_problem.html> and <https://www.sqlite.org/howtocorrupt.html>. The workaround is to use the `androidDatabaseProvider: 'system'` setting as described in the **Android sqlite implementation** section below.
+**WARNING 2:** As described above: by default this plugin uses a non-standard __[`android-sqlcipher-evplus-ndk-driver-free`](https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free)__ sqlite database access implementation on Android. In case an application access the **same** database using multiple plugins there is a risk of data corruption (ref: [xpbrew/cordova-sqlite-storage#626](https://github.com/xpbrew/cordova-sqlite-storage/issues/626)) as described in <http://ericsink.com/entries/multiple_sqlite_problem.html> and <https://www.sqlite.org/howtocorrupt.html>. The workaround is to use the `androidDatabaseProvider: 'system'` setting as described in the **Android sqlite implementation** section below.
 
 To specify a different location (affects iOS/macOS *only*):
 
@@ -964,7 +965,7 @@ Use the `location` or `iosDatabaseLocation` option in `sqlitePlugin.openDatabase
 
 ### Android database provider
 
-By default, this plugin uses [android-sqlite-evplus-ndk-driver-free](https://github.com/storesafe/android-sqlite-evplus-ndk-driver-free) with the performance and memory usage enhancements. To use the built-in Android system database provider implementation instead:
+By default, this plugin uses __[`brody4hire/android-sqlcipher-evplus-ndk-driver-free`](https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free)__ with the performance and memory usage enhancements. To use the built-in Android system database provider implementation instead:
 
 ```js
 var db = window.sqlitePlugin.openDatabase({
@@ -977,7 +978,7 @@ var db = window.sqlitePlugin.openDatabase({
 (Use of the `androidDatabaseImplementation: 2` setting which is now replaced by `androidDatabaseProvider: 'system'` is now deprecated and may be removed in the near future.)
 
 **IMPORTANT:**
-- As described above: by default this plugin uses a non-standard [android-sqlite-evplus-ndk-driver-free](https://github.com/storesafe/android-sqlite-evplus-ndk-driver-free) database access implementation on Android. In case an application access the **same** database using multiple plugins there is a risk of data corruption (ref: [xpbrew/cordova-sqlite-storage#626](https://github.com/xpbrew/cordova-sqlite-storage/issues/626)) as described in <http://ericsink.com/entries/multiple_sqlite_problem.html> and <https://www.sqlite.org/howtocorrupt.html>. The workaround is to use the `androidDatabaseProvider: 'system'` setting as described here.
+- As described above: by default this plugin uses a non-standard __[`android-sqlcipher-evplus-ndk-driver-free`](https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free)__ database access implementation on Android. In case an application access the **same** database using multiple plugins there is a risk of data corruption (ref: [xpbrew/cordova-sqlite-storage#626](https://github.com/xpbrew/cordova-sqlite-storage/issues/626)) as described in <http://ericsink.com/entries/multiple_sqlite_problem.html> and <https://www.sqlite.org/howtocorrupt.html>. The workaround is to use the `androidDatabaseProvider: 'system'` setting as described here.
 - In case of the `androidDatabaseProvider: 'system'` setting, [xpbrew/cordova-sqlite-storage#193](https://github.com/xpbrew/cordova-sqlite-storage/issues/193) reported (as observed by a number of app developers in the past) that in certain Android versions, if the app is stopped or aborted without closing the database then there is an unexpected database lock and the data that was inserted is lost. The workaround is described below.
 
 <!-- END Android database provider -->
@@ -992,7 +993,7 @@ NOTE: This section ONLY APPLIES when using `androidDatabaseProvider: 'system'` o
 
 The cause of this issue remains unknown. Of interest: [android / platform_external_sqlite commit d4f30d0d15](https://github.com/android/platform_external_sqlite/commit/d4f30d0d1544f8967ee5763c4a1680cb0553039f) which references and includes the sqlite commit at: http://www.sqlite.org/src/info/6c4c2b7dba
 
-This is *not* an issue when the default [android-sqlite-evplus-ndk-driver-free](https://github.com/storesafe/android-sqlite-evplus-ndk-driver-free) database implementation is used, which is the case when no `androidDatabaseProvider` or `androidDatabaseImplementation` setting is used.
+This is *not* an issue when the default ~~[android-sqlite-evplus-ndk-driver-free](https://github.com/storesafe/android-sqlite-evplus-ndk-driver-free)~~ __[`android-sqlcipher-evplus-ndk-driver-free`](https://github.com/brody4hire/android-sqlcipher-evplus-ndk-driver-free)__ database implementation is used, which is the case when no `androidDatabaseProvider` or `androidDatabaseImplementation` setting is used.
 
 There is an optional workaround that simply closes and reopens the database file at the end of every transaction that is committed. The workaround is enabled by opening the database with options as follows:
 

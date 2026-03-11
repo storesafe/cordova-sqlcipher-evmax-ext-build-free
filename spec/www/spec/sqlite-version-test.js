@@ -104,7 +104,7 @@ var mytests = function() {
               expect(rs).toBeDefined();
               expect(rs.rows).toBeDefined();
               expect(rs.rows.length).toBe(1);
-              expect(rs.rows.item(0).myResult).toBe('---'); // XXX TODO UPDATE SQLCIPHER VERSION FOR ANDROID & FIX THIS TEST
+              expect(rs.rows.item(0).myResult).toBe('3.51.2'); // [SQLCipher 4.13.0]
 
               // Close (plugin only) & finish:
               (isWebSql) ? done() : db.close(done, done);
