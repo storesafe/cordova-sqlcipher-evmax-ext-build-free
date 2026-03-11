@@ -85,7 +85,7 @@ This plugin version also uses a fixed version of SQLCipher based on SQLite3 on i
 
 ## A quick tour
 
-To open a database:
+To open a database with a password key:
 
 ```Javascript
 var db = null;
@@ -93,6 +93,7 @@ var db = null;
 document.addEventListener('deviceready', function() {
   db = window.sqlitePlugin.openDatabase({
     name: 'my.db',
+    key: 'password-key',
     location: 'default',
   });
 });
@@ -227,7 +228,6 @@ See the [Sample section](#sample) for a sample with a more detailed explanation 
   - `SQLITE_ENABLE_FTS5`
   - `SQLITE_ENABLE_RTREE`
   - `SQLITE_ENABLE_JSON1`
-  - `SQLITE_ENABLE_RTREE`
   - `SQLITE_DEFAULT_PAGE_SIZE=4096` - new default page size ref: <http://sqlite.org/pgszchng2016.html>
   - `SQLITE_DEFAULT_CACHE_SIZE=-2000` - new default cache size ref: <http://sqlite.org/pgszchng2016.html>
   - `SQLITE_OS_WINRT` (Windows only)
@@ -982,7 +982,9 @@ var db = window.sqlitePlugin.openDatabase({
 
 <!-- END Android database provider -->
 
-### Workaround for Android db locking issue
+### Workaround for possible Android db locking issue with unencrypted databases
+
+NOTE: This section ONLY APPLIES when using `androidDatabaseProvider: 'system'` option, **which does not work with encryption**.
 
 [xpbrew/cordova-sqlite-storage#193](https://github.com/xpbrew/cordova-sqlite-storage/issues/193) reported (as observed by a number of app developers in the past) that when using the Android system database provider (using the `androidDatabaseProvider: 'system'` setting) on certain Android versions and if the app is stopped or aborted without closing the database then:
 - (sometimes) there is an unexpected database lock
